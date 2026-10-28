@@ -2,7 +2,7 @@ import { Eye } from "lucide-react";
 
 export default function LoginForm() {
   return (
-    <div className="w-full max-w-md rounded-3xl border border-gray-200 p-8">
+    <div className=" max-w-md p-8 rounded-3xl bg-white shadow-2xl">
       <h1 className="text-4xl font-bold text-center">
         Welcome Back
       </h1>

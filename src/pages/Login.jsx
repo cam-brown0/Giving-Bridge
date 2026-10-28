@@ -1,79 +1,114 @@
-import { Eye } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Eye } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-<Link to="/register">
-  Sign Up
-</Link>
 export default function Login() {
+  const navigate = useNavigate();
+
   return (
-    <div className="w-full max-w-md rounded-3xl border border-gray-200 p-8">
-      <h1 className="text-4xl font-bold text-center">
-        Welcome Back
-      </h1>
+<div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+  <div>
+  <h1 className="text-6xl font-black text-[#4FA658]">
+    SMALL GIFTS.
+  </h1>
 
-      <p className="text-center text-gray-500 mt-2 mb-8">
-        Please log in to continue
-      </p>
+  <h1 className="text-6xl font-black text-[#4FA658]">
+    BIG IMPACT.
+  </h1>
 
-      <div className="space-y-4">
-        <div>
-          <label className="block text-sm mb-2">
+  <p className="mt-6 text-xl text-gray-700">
+    Every donation creates change.
+  </p>
+
+  <img
+    src="/donation-box.png"
+    alt="Donation Box"
+    className="mt-8"
+  />
+</div>
+<div className=" min-h-screen bg-[#F7F4EE] flex items-center justify-center p-8">
+      <div className=" max-w-md p-8 rounded-3xl bg-white shadow-2xl ">
+        <h1 className="text-4xl font-bold text-center">
+          Welcome Back
+        </h1>
+
+        <p className="text-center text-gray-500 mt-2 mb-8">
+          Please log in to continue
+        </p>
+
+        {/* Email */}
+        <div className="mb-4">
+          <label className="block mb-1 text-sm font-medium">
             Email Address
           </label>
 
           <input
             type="email"
-            placeholder="Placeholder"
-            className="w-full bg-gray-100 rounded px-4 py-3 outline-none"
+            placeholder="Email Address"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2"
           />
         </div>
 
-        <div>
-          <label className="block text-sm mb-2">
+        {/* Password */}
+        <div className="mb-2">
+          <label className="block mb-1 text-sm font-medium">
             Password
           </label>
 
           <div className="relative">
             <input
               type="password"
-              placeholder="Placeholder"
-              className="w-full bg-gray-100 rounded px-4 py-3 outline-none"
+              placeholder="Password"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 pr-10"
             />
 
             <Eye
-              size={16}
+              size={18}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
             />
           </div>
         </div>
 
-        <p className="text-xs text-gray-400">
+        <p className="text-xs text-gray-500 mb-4">
           It must be a combination of minimum 8 letters,
-          numbers and symbols.
+          numbers, and symbols.
         </p>
 
-        <div className="flex justify-between items-center text-sm">
-          <label className="flex gap-2 items-center">
+        {/* Remember me / Forgot password */}
+        <div className="flex justify-between items-center mb-6 text-sm">
+          <label className="flex items-center gap-2">
             <input type="checkbox" />
             Remember me
           </label>
 
-          <a href="#" className="text-indigo-600">
+          <a
+            href="#"
+            className="text-blue-600 hover:underline"
+          >
             Forgot Password?
           </a>
         </div>
 
-        <button className="w-full bg-indigo-600 text-white py-3 rounded font-medium">
-          Log In
-        </button>
+        {/* Login Button */}
+         <button
+      onClick={() => navigate("/dashboard")}
+      className="w-full bg-[#4FA658] text-white py-3 rounded-lg"
+    >
+      Log In
+    </button>
 
-        <p className="text-center text-sm mt-4">
+        {/* Sign Up Link */}
+        <p className="text-center mt-6 text-sm">
           No account yet?{" "}
-          <a href="#" className="text-indigo-600">
+          <Link
+            to="/register"
+            className="text-blue-600 hover:underline"
+          >
             Sign Up
-          </a>
+          </Link>
         </p>
       </div>
+    </div>
     </div>
   );
 }
