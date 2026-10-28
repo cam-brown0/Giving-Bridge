@@ -1,1 +1,0 @@
-from app.models.user import User  # add each new model here as you create it
