@@ -1,16 +1,18 @@
 services:
   db:
-    image: postgres:16
-    container_name: charity_db
+    image: mysql:8.4
+    container_name: charity_mysql
     restart: unless-stopped
     environment:
-      POSTGRES_USER: charity
-      POSTGRES_PASSWORD: charity_dev_pw
-      POSTGRES_DB: charity
+      MYSQL_ROOT_PASSWORD: root_dev_pw
+      MYSQL_DATABASE: charity          # must match the schema name in schema.sql
+      MYSQL_USER: charity
+      MYSQL_PASSWORD: charity_dev_pw
     ports:
-      - "5433:5432"
+      - "3306:3306"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - mysqldata:/var/lib/mysql
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
 
 volumes:
-  pgdata:
+  mysqldata:

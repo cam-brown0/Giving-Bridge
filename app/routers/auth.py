@@ -4,7 +4,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.models.user import User
+from app.models.user import User, UserRole
 from app.schemas.user import LoginRequest, TokenOut, UserCreate, UserOut
 from app.services.security import create_access_token, hash_password, verify_password
 
@@ -24,9 +24,10 @@ def register(payload: UserCreate, db: Session = Depends(get_db)):
     user = User(
         email=email,
         password_hash=hash_password(payload.password),
-        full_name=payload.full_name.strip(),
-        role=payload.role,
+        first_name=payload.first_name.strip(),
+        last_name=payload.last_name.strip(),
     )
+    user.role_rows.append(UserRole(role=payload.role))
     db.add(user)
     try:
         db.commit()

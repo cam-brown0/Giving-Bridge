@@ -6,7 +6,8 @@ from pydantic import BaseModel, ConfigDict, EmailStr, Field
 class UserCreate(BaseModel):
     email: EmailStr
     password: str = Field(min_length=8, max_length=64)
-    full_name: str = Field(min_length=1, max_length=120)
+    first_name: str = Field(min_length=1, max_length=45)
+    last_name: str = Field(min_length=1, max_length=45)
     role: Literal["donor", "org_admin"] = "donor"
 
 
@@ -20,7 +21,8 @@ class UserOut(BaseModel):
 
     id: int
     email: str
-    full_name: str
+    first_name: str
+    last_name: str
     role: str
 
 

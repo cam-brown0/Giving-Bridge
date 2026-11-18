@@ -1,1 +1,1 @@
-from app.models.user import User  # add each new model here as you create it
+from app.models.user import User, UserRole  # add each new model here as you create it
